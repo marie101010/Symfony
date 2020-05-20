@@ -17,3 +17,8 @@
 ******************************************
             $repositoy = $this->getDoctrine()->getRepository(Property::class);          
             dump($repositoy);
+********************************************
+            $property = $this->repository->findAllVisible ();
+            $property[0]->setSold(true);
+            $this->em->flush();
+            ********************************************

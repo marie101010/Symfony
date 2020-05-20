@@ -7,12 +7,14 @@ use App\Repository\PropertyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 
 class PropertyController extends AbstractController{
 
-    public function __construct(PropertyRepository $repository)
+    public function __construct(PropertyRepository $repository, EntityManagerInterface $em)
     {
-        $this->repository = $repository;
+        $this->repository = $repository ;
+        $this->em = $em;
     }
     /**
      * @Route("/biens",name="property.index")
@@ -20,8 +22,7 @@ class PropertyController extends AbstractController{
      */
     public function index() : Response
         {
-            $property = $this->repository->find (1);
-            dump($property);
+
             return $this->render('property/index.html.twig',[
                 'current_menu' => 'properties'
             ]);
