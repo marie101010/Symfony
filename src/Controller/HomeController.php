@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
         {
             $properties = $repository->findLatest ();
             return $this->render('pages/home.html.twig', [
-                'propertues' => $properties
+                'properties' => $properties
             ]);
         }
 
